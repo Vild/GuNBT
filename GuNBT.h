@@ -34,7 +34,7 @@ typedef struct gnbt_node {
         } tag_byte_array;
 
         struct nbt_string {
-            char * tag_string;
+            char * data;
             int32_t length;
         } tag_string;
 
@@ -47,7 +47,7 @@ typedef struct gnbt_node {
         struct nbt_compound {
             gnbt_node * data;
             int32_t length;
-        } tag_compiund;
+        } tag_compound;
 
         struct nbt_int_array {
             int32_t * data;
@@ -59,7 +59,7 @@ typedef struct gnbt_node {
 
 void gnbt_parse_file(FILE * fp);
 void gnbt_save_tree(nbt_node * tree, const char * path);
-void gnbt_free(nbt_node);
+void gnbt_free(nbt_node * node);
 gnbt_node * nbt_find_by_name(nbt_node * tree, const char * name);
 gnbt_node * nbt_add_to_compound(nbt_node * tree, nbt_node * node);
 #endif
